@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:48:25 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 15:20:52 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 16:35:18 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_refresh(t_all *a, int up_down, int lef_rig, char *PNG)
 
 void	ft_new(t_all *a, int x, int y, char *PNG)
 {
+	mlx_delete_texture(a->map->png[HERO]);
 	mlx_delete_image(a->map->window, a->map->img[HERO]);
 	a->map->png[HERO] = mlx_load_png(PNG);
 	a->map->img[HERO] = mlx_texture_to_image(a->map->window, a->map->png[HERO]);

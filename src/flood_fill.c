@@ -6,11 +6,36 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 17:56:03 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 13:33:55 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 16:29:44 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	ft_ask_back(t_all *a)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (a->mat->mat[y])
+	{
+		x = 0;
+		while (a->mat->mat[y][x] != '\0')
+		{
+			if (a->mat->mat[y][x] == '0')
+			{
+				a->mat->x = x;
+				a->mat->y = y;
+				break ;
+			}
+			x++;
+		}
+		if (a->mat->mat[y][x] == '0')
+			break ;
+		y++;
+	}
+}
 
 void	flood_fill_helper(t_all *a, int x, int y)
 {
@@ -25,7 +50,10 @@ void	flood_fill_helper(t_all *a, int x, int y)
 
 void	ft_flood_fill(t_all *a)
 {
-	flood_fill_helper(a, 3, 3);
+	a->mat->x = 0;
+	a->mat->y = 0;
+	ft_ask_back(a);
+	flood_fill_helper(a, a->mat->x, a->mat->y);
 	ft_valid_compo(a);
 	ft_deallocation_matrix(a->mat->mat);
 }

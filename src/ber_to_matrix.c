@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bar_to_matrix.c                                    :+:      :+:    :+:   */
+/*   ber_to_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:34:05 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 11:50:59 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 16:05:12 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	matrix_load(t_all *all)
 	ft_width_matrix(all);
 	line_matrix(all);
 	if (all->matrix->line >= all->matrix->column)
-		ft_error("ERROR 4! Wrong width and length!\n");
+		ft_error("ERROR 3! Wrong width and length!\n");
 	all->matrix->matrix = ft_calloc(sizeof(char *), all->matrix->y);
 	all->mat->mat = ft_calloc(sizeof(char *), all->matrix->y);
 	if (!all->matrix->matrix)
-		ft_error("ERROR 3! MEMORY ALLOCATION ERROR");
+		ft_error("ERROR 4! MEMORY ALLOCATION ERROR");
 	fd = open(all->archive_ber, O_RDONLY);
 	i = 0;
 	temp = "a";

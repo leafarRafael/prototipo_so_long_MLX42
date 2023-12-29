@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:04:36 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 11:57:49 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 16:23:01 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	check_items_on_map(t_all *all)
 {
 	ft_valid_this_fot_me(all);
 	if (all->items->exit > 1 || all->items->exit < 1)
-		ft_error("ERROR 5! The map.bar has more exits than allowed!\n");
+		ft_error("ERROR 5! The map.ber has more exits than allowed!\n");
 	if (all->items->player > 1 || all->items->player < 1)
-		ft_error("ERROR 5! The map.bar has more heros than allowed!!\n");
+		ft_error("ERROR 5! The map.ber has more heros than allowed!!\n");
 	if (all->items->collect < 1)
-		ft_error("ERROR 5! The map.bar has fewer collectables than mandatory!\n");
+		ft_error("ERROR 5! The map.ber has fewer collectables than mandatory!\n");
 	if (all->items->others != 0)
 	{
 		ft_deallocation_matrix(all->matrix->matrix);
@@ -88,7 +88,7 @@ void	ft_valid_wall(t_all *a)
 	if (a->map->is_wrong != 0)
 	{
 		ft_deallocation_matrix(a->matrix->matrix);
-		ft_error("ERROR 6! The map.bar is not surrounded by walls\n");
+		ft_error("ERROR 6! The map.ber is not surrounded by walls\n");
 	}
 }
 
@@ -109,8 +109,8 @@ void	ft_valid_size(t_all *all)
 		}
 		if(x != all->matrix->column)
 		{
-			ft_printf("ERROR 7! The map.bar has disproportionate columns = [%d] column [%d]",
-				y, all->matrix->column);
+			ft_printf("ERROR 7! The map.ber has disproportionate line = [%d] column [%d]",
+				y, x);
 						ft_deallocation_matrix(all->matrix->matrix);
 						exit(1);
 		}
