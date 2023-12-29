@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:17:52 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 14:26:17 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 15:03:35 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int	main(int argc, char *argv[])
 	mlx_put_string(all->map->window, "0", 0, 0);
 	mlx_key_hook(all->map->window, &ft_my_hooks, all);
 	mlx_loop(all->map->window);
-	ft_deallocation_matrix(all->matrix->matrix);
-	mlx_terminate(all->map->window);
+	ft_delete_img_texture_matrix_exit(all);
+	return (0);
 }
