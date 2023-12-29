@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:10:59 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 13:28:18 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 15:26:13 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,17 @@ typedef enum e_type
 # ifndef PNG_WALL
 #  define PNG_WALL "./temp/tijolo.png"
 # endif
-# ifndef PNG_HERO
-#  define PNG_HERO "./temp/arplaine.png"
+# ifndef PNG_HERO_UP
+#  define PNG_HERO_UP "./temp/arplaine_up.png"
+# endif
+# ifndef PNG_HERO_DOWN
+#  define PNG_HERO_DOWN "./temp/arplaine_down.png"
+# endif
+# ifndef PNG_HERO_LEFT
+#  define PNG_HERO_LEFT "./temp/arplaine_left.png"
+# endif
+# ifndef PNG_HERO_RIGTH
+#  define PNG_HERO_RIGTH "./temp/arplaine_right.png"
 # endif
 # ifndef  PNG_BACK
 #  define PNG_BACK "./temp/nigth.png"
@@ -131,9 +140,9 @@ void	ft_cpy_to_matrix(t_all *all, char *temp, int fd, int i);
 
 // hero.c
 void	ft_ask_hero_to_me(t_all *a);
-void	ft_move_hero(t_all *a, int up_down, int lef_rig);
-void	ft_refresh(t_all *a, int up_down, int lef_rig);
-void	ft_new(t_all *a, int x, int y);
+void	ft_move_hero(t_all *a, int up_down, int lef_rig, char *PNG);
+void	ft_refresh(t_all *a, int up_down, int lef_rig, char *PNG);
+void	ft_new(t_all *a, int x, int y, char *PNG);
 
 // hooks.c
 void	ft_my_hooks(mlx_key_data_t keyd, void *param);

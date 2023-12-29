@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:07:03 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 11:56:52 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 15:14:27 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_img_texture(t_all *a)
 	a->map->img[WALL] = mlx_texture_to_image(a->map->window, a->map->png[WALL]);
 	if (!a->map->png[WALL] || !a->map->img[WALL])
 		ft_mlx_error();
-	a->map->png[HERO] = mlx_load_png(PNG_HERO);
+	a->map->png[HERO] = mlx_load_png(PNG_HERO_UP);
 	a->map->img[HERO] = mlx_texture_to_image(a->map->window, a->map->png[HERO]);
 	if (!a->map->png[HERO] || !a->map->img[HERO])
 		ft_mlx_error();

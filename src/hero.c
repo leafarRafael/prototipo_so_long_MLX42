@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:48:25 by rbutzke           #+#    #+#             */
-/*   Updated: 2023/12/29 13:28:08 by rbutzke          ###   ########.fr       */
+/*   Updated: 2023/12/29 15:20:52 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_ask_hero_to_me(t_all *a)
 	}
 }
 
-void	ft_move_hero(t_all *a, int up_down, int lef_rig)
+void	ft_move_hero(t_all *a, int up_down, int lef_rig, char *PNG)
 {
 	if (a->matrix->matrix[a->hero->y + up_down][a->hero->x + lef_rig] != '1')
 	{
@@ -53,18 +53,18 @@ void	ft_move_hero(t_all *a, int up_down, int lef_rig)
 			a->items->collect--;
 			ft_delete_img_texture_matrix_exit(a);
 		}
-		ft_refresh(a, up_down, lef_rig);
+		ft_refresh(a, up_down, lef_rig, PNG);
 	}
 }
 
-void	ft_refresh(t_all *a, int up_down, int lef_rig)
+void	ft_refresh(t_all *a, int up_down, int lef_rig, char *PNG)
 {
 	char	*number;
 
 	a->matrix->matrix[a->hero->y][a->hero->x] = '0';
 	a->matrix->matrix[a->hero->y + up_down][a->hero->x + lef_rig] = 'P';
 	a->hero->movements++;
-	ft_new(a, a->map->s_x * (a->hero->x + lef_rig), a->map->s_y * (a->hero->y + up_down));
+	ft_new(a, a->map->s_x * (a->hero->x + lef_rig), a->map->s_y * (a->hero->y + up_down), PNG);
 	mlx_image_to_window(a->map->window, a->map->img[WALL], 0, 0);
 	number = ft_itoa(a->hero->movements);
 	mlx_put_string(a->map->window, number, 0, 0);
@@ -74,9 +74,10 @@ void	ft_refresh(t_all *a, int up_down, int lef_rig)
 	a->hero->x += lef_rig;
 }
 
-void	ft_new(t_all *a, int x, int y)
+void	ft_new(t_all *a, int x, int y, char *PNG)
 {
 	mlx_delete_image(a->map->window, a->map->img[HERO]);
+	a->map->png[HERO] = mlx_load_png(PNG);
 	a->map->img[HERO] = mlx_texture_to_image(a->map->window, a->map->png[HERO]);
 	if (!a->map->png[HERO] || !a->map->img[HERO])
 		ft_mlx_error();
